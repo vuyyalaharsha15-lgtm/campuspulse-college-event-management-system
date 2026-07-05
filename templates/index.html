@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CampusPulse</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="bg-animation">
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+<div class="circle c4"></div>
+<div class="circle c5"></div>
+
+</div>
+
+<nav>
+
+<div class="logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<h2>
+
+Campus<span>Pulse</span>
+
+</h2>
+
+</div>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#events">Events</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="buttons">
+
+<a href="/login" class="login">Login</a>
+
+<a href="/register" class="register">Register</a>
+
+<a href="/admin_login" class="admin-login">
+<i class="fa-solid fa-user-shield"></i>
+Admin
+</a>
+
+</div>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="left">
+
+<div class="tag">
+
+👋 Welcome To CampusPulse
+
+</div>
+
+<h1>
+
+CampusPulse
+
+<span>
+
+Smart College Event
+
+</span>
+
+Management System
+
+</h1>
+
+<p>
+
+Organize, manage and participate in college events effortlessly.
+
+Register for technical, cultural, sports, hackathons and workshops with one click.
+
+</p>
+
+<div class="hero-btn">
+
+<a href="#" class="btn1" onclick="showPopup()">
+    Explore Events
+</a>
+
+<a href="/register" class="btn2">
+    Register Now
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h2>500+</h2>
+
+<p>Events</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>10K+</h2>
+
+<p>Students</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-trophy"></i>
+
+<h2>50+</h2>
+
+<p>Colleges</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="dashboard" id="events">
+
+<div class="topbar">
+
+<div class="dot red"></div>
+
+<div class="dot yellow"></div>
+
+<div class="dot green"></div>
+
+</div>
+
+<h3>
+
+Upcoming Events
+
+</h3>
+
+<div class="event-grid">
+
+<div class="event">
+
+<i class="fa-solid fa-laptop-code"></i>
+
+<h4>Tech Fest</h4>
+
+<button>Register</button>
+
+</div>
+
+<div class="event">
+
+<i class="fa-solid fa-music"></i>
+
+<h4>Cultural</h4>
+
+<button>Register</button>
+
+</div>
+
+<div class="event">
+
+<i class="fa-solid fa-chalkboard"></i>
+
+<h4>Workshop</h4>
+
+<button>Register</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="float bell">
+
+<i class="fa-solid fa-bell"></i>
+
+</div>
+
+<div class="float calendar">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+</div>
+
+<div class="float trophy">
+
+<i class="fa-solid fa-trophy"></i>
+
+</div>
+
+<div class="student one">
+
+<i class="fa-solid fa-user-graduate"></i>
+
+</div>
+
+<div class="student two">
+
+<i class="fa-solid fa-user-graduate"></i>
+
+</div>
+
+<div class="student three">
+
+<i class="fa-solid fa-user-graduate"></i>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT SECTION ================= -->
+
+<section id="about" class="features">
+
+<h4>ABOUT CAMPUSPULSE</h4>
+
+<h1>Smart College Event Management System</h1>
+
+<p style="max-width:1000px;
+margin:25px auto;
+text-align:center;
+color:white;
+font-size:18px;
+line-height:35px;">
+
+CampusPulse is a modern Smart College Event Management System designed to simplify
+college event organization and student participation.
+
+Students can explore events, register online, make secure payments,
+track registrations, download certificates, submit feedback,
+and monitor their event participation from a single dashboard.
+
+Administrators can easily manage students, events, attendance,
+payments, reports, certificates and analytics through one powerful platform.
+
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-user-graduate"></i>
+
+<h3>Student Friendly</h3>
+
+<p>
+
+Easy registration, payments, attendance and certificates.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-user-shield"></i>
+
+<h3>Admin Control</h3>
+
+<p>
+
+Complete control over events, students and reports.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-lock"></i>
+
+<h3>Secure Platform</h3>
+
+<p>
+
+Safe login, protected payments and reliable data.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-cloud"></i>
+
+<h3>Cloud Ready</h3>
+
+<p>
+
+Access your events anytime from anywhere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features" id="features">
+
+<h4>OUR FEATURES</h4>
+
+<h1>
+
+Everything You Need in One Platform
+
+</h1>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h3>
+
+Event Management
+
+</h3>
+
+<p>
+
+Create, update and organize events effortlessly.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-user-plus"></i>
+
+<h3>
+
+Online Registration
+
+</h3>
+
+<p>
+
+Students can register instantly with one click.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-credit-card"></i>
+
+<h3>
+
+Online Payments
+
+</h3>
+
+<p>
+
+Fast and secure payment gateway integration.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-certificate"></i>
+
+<h3>
+
+Certificates
+
+</h3>
+
+<p>
+
+Automatically generate participation certificates.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-bell"></i>
+
+<h3>
+
+Notifications
+
+</h3>
+
+<p>
+
+Receive instant announcements and reminders.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h3>
+
+Analytics
+
+</h3>
+
+<p>
+
+Generate reports with beautiful charts and insights.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-clipboard-check"></i>
+
+<h3>
+
+Attendance
+
+</h3>
+
+<p>
+
+Mark and monitor student attendance digitally.
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-comments"></i>
+
+<h3>
+
+Feedback
+
+</h3>
+
+<p>
+
+Collect valuable student feedback after every event.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+
+<section id="contact" class="features">
+
+<h4>CONTACT US</h4>
+
+<h1>Let's Build Amazing College Events Together</h1>
+
+<p style="
+max-width:850px;
+margin:20px auto;
+color:white;
+font-size:18px;
+line-height:32px;
+text-align:center;">
+
+Have questions or need support? Reach out to us anytime.
+We're always ready to help students and administrators.
+
+</p>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<i class="fa-solid fa-envelope"></i>
+
+<h3>Email</h3>
+
+<p>
+
+campuspulse@gmail.com
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-phone"></i>
+
+<h3>Phone</h3>
+
+<p>
+
++91 9848764118
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Address</h3>
+
+<p>
+
+Andhra Pradesh, India
+
+</p>
+
+</div>
+
+<div class="feature-card">
+
+<i class="fa-solid fa-clock"></i>
+
+<h3>Working Hours</h3>
+
+<p>
+
+Mon - Sat<br>
+
+9:00 AM - 6:00 PM
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer style="
+
+margin-top:70px;
+
+padding:45px 20px;
+
+background:rgba(0,0,0,.18);
+
+backdrop-filter:blur(12px);
+
+text-align:center;
+
+color:white;
+
+">
+
+<h2 style="font-size:32px;margin-bottom:10px;">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+Campus<span style="color:#FFD54F;">Pulse</span>
+
+</h2>
+
+<p style="font-size:18px;margin-bottom:25px;">
+
+Smart College Event Management System
+
+</p>
+
+<div style="margin-bottom:25px;font-size:28px;">
+
+<a href="#" style="color:white;margin:0 15px;">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="#" style="color:white;margin:0 15px;">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#" style="color:white;margin:0 15px;">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="#" style="color:white;margin:0 15px;">
+<i class="fab fa-github"></i>
+</a>
+
+</div>
+
+<p style="opacity:.9;">
+
+© 2026 CampusPulse | Smart College Event Management System
+
+</p>
+
+<p style="margin-top:10px;opacity:.75;">
+
+Developed by Harsha Vuyyala
+
+</p>
+
+</footer>
+
+<!-- Explore Events Popup -->
+
+<div id="eventPopup" class="popup">
+
+<div class="popup-box">
+
+<h2>🎉 Explore Events</h2>
+
+<p>
+To explore all upcoming events,<br>
+please register first.
+</p>
+
+<div class="popup-buttons">
+
+<a href="/register" class="popup-register">
+Register Now
+</a>
+
+<button onclick="closePopup()">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function showPopup(){
+    document.getElementById("eventPopup").style.display="flex";
+}
+
+function closePopup(){
+    document.getElementById("eventPopup").style.display="none";
+}
+
+window.onclick=function(e){
+
+let popup=document.getElementById("eventPopup");
+
+if(e.target==popup){
+popup.style.display="none";
+}
+
+}
+
+</script>
+
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

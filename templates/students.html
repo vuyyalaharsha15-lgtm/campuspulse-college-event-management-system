@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Registered Students</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <h1 style="text-align:center; margin-bottom:30px;">
+        <i class="fa-solid fa-user-graduate"></i>
+        Registered Students
+    </h1>
+
+    <!-- Search Box -->
+
+    <form class="search-form" method="GET" action="/students">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="🔍 Search by Name, Student ID or Department"
+            value="{{ request.args.get('search','') }}">
+
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search
+        </button>
+
+    </form>
+
+    <br><br>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Name</th>
+
+            <th>Student ID</th>
+
+            <th>Email</th>
+
+            <th>Department</th>
+
+            <th>Phone</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if students %}
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>{{ student.id }}</td>
+
+                <td>{{ student.full_name }}</td>
+
+                <td>{{ student.student_id }}</td>
+
+                <td>{{ student.email }}</td>
+
+                <td>{{ student.department }}</td>
+
+                <td>{{ student.phone }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="6" style="padding:25px;">
+                    No students found.
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+    <div class="button-container" style="margin-top:35px;">
+
+        <a href="/admin_dashboard" class="dashboard-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

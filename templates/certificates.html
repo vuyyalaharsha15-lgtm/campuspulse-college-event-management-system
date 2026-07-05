@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>CampusPulse | Certificates</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <h1 style="text-align:center; margin-bottom:30px;">
+
+        <i class="fa-solid fa-award"></i>
+
+        Certificates Issued
+
+    </h1>
+
+    <table>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Student Name</th>
+
+            <th>Roll No</th>
+
+            <th>Event</th>
+
+            <th>Certificate No</th>
+
+            <th>Date Issued</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        {% for certificate in certificates %}
+
+        <tr>
+
+            <td>{{ certificate.id }}</td>
+
+            <td>{{ certificate.full_name }}</td>
+
+            <td>{{ certificate.student_id }}</td>
+
+            <td>{{ certificate.title }}</td>
+
+            <td>{{ certificate.certificate_no }}</td>
+
+            <td>{{ certificate.issue_date }}</td>
+
+            <td>
+
+                <span class="status">
+
+                    ✅ Issued
+
+                </span>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <div class="button-container">
+
+        <a href="/admin_dashboard"
+           class="dashboard-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

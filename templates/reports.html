@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusPulse | Reports</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/admin.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(
+135deg,
+#0B3D91,
+#1565C0,
+#42A5F5
+);
+
+background-size:400% 400%;
+
+animation:bgMove 12s ease infinite;
+
+min-height:100vh;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.main-content{
+
+padding:35px;
+
+}
+
+.page-title{
+
+margin-bottom:30px;
+
+}
+
+.page-title h1{
+
+color:white;
+
+font-size:34px;
+
+font-weight:bold;
+
+text-shadow:0 2px 10px rgba(0,0,0,.3);
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+
+gap:22px;
+
+margin-bottom:35px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.14);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.25);
+
+border-radius:18px;
+
+padding:25px;
+
+text-align:center;
+
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+}
+
+.card h3{
+
+color:#EAF4FF;
+
+margin-bottom:10px;
+
+font-size:18px;
+
+}
+
+.card h2{
+
+color:white;
+
+font-size:34px;
+
+}
+
+.green{
+color:#00E676!important;
+}
+
+.orange{
+color:#FFD54F!important;
+}
+
+.red{
+color:#FF5252!important;
+}
+
+.blue{
+color:#81D4FA!important;
+}
+
+.section{
+
+background:rgba(255,255,255,.14);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.20);
+
+border-radius:18px;
+
+padding:25px;
+
+margin-top:35px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+}
+
+.section h2{
+
+color:white;
+
+margin-bottom:25px;
+
+}
+
+.analytics-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+
+gap:35px;
+
+}
+
+.chart-card{
+
+background:rgba(255,255,255,.10);
+
+padding:20px;
+
+border-radius:15px;
+
+}
+
+.chart-card h3{
+
+color:white;
+
+text-align:center;
+
+margin-bottom:20px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+color:white;
+
+}
+
+table th{
+
+background:#0B3D91;
+
+padding:14px;
+
+}
+
+table td{
+
+padding:13px;
+
+text-align:center;
+
+border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+table tr:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.dashboard-btn{
+
+display:inline-block;
+
+margin-top:35px;
+
+padding:14px 28px;
+
+background:#FFD54F;
+
+color:#0B3D91;
+
+font-weight:bold;
+
+border-radius:10px;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.dashboard-btn:hover{
+
+background:#FFC107;
+
+transform:scale(1.05);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+<div class="page-title">
+
+<h1>📊 CampusPulse Reports Dashboard</h1>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Students</h3>
+<h2>{{ total_students }}</h2>
+</div>
+
+<div class="card">
+<h3>Total Events</h3>
+<h2>{{ total_events }}</h2>
+</div>
+
+<div class="card">
+<h3>Total Registrations</h3>
+<h2>{{ total_registrations }}</h2>
+</div>
+
+<div class="card">
+<h3>Total Payments</h3>
+<h2>{{ total_payments }}</h2>
+</div>
+
+<div class="card">
+<h3>Successful Payments</h3>
+<h2 class="green">{{ success_payments }}</h2>
+</div>
+
+<div class="card">
+<h3>Pending Payments</h3>
+<h2 class="orange">{{ pending_payments }}</h2>
+</div>
+
+<div class="card">
+<h3>Certificates Issued</h3>
+<h2>{{ total_certificates }}</h2>
+</div>
+
+<div class="card">
+<h3>Attendance Present</h3>
+<h2 class="green">{{ present }}</h2>
+</div>
+
+<div class="card">
+<h3>Attendance Absent</h3>
+<h2 class="red">{{ absent }}</h2>
+</div>
+
+<div class="card">
+<h3>Total Revenue</h3>
+<h2 class="blue">₹ {{ revenue }}</h2>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>📊 Analytics Dashboard</h2>
+
+<div class="analytics-grid">
+
+<div class="chart-card">
+
+<h3>Payments Status</h3>
+
+<canvas id="paymentChart"></canvas>
+
+</div>
+
+<div class="chart-card">
+
+<h3>Attendance Report</h3>
+
+<canvas id="attendanceChart"></canvas>
+
+</div>
+
+<div class="chart-card">
+
+    <h3>Campus Overview</h3>
+
+    <div style="height:300px; width:100%;">
+        <canvas id="overviewChart"></canvas>
+    </div>
+
+</div>
+
+<div class="chart-card">
+
+<h3>Revenue Analytics</h3>
+
+<canvas id="revenueChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>📅 Event Wise Report</h2>
+
+<table>
+
+<tr>
+
+<th>Event Name</th>
+
+<th>Total Registrations</th>
+
+<th>Total Revenue</th>
+
+</tr>
+
+{% for e in event_reports %}
+
+<tr>
+
+<td>{{ e.title }}</td>
+
+<td>{{ e.registrations }}</td>
+
+<td>₹ {{ e.revenue }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<!-- Recent Payments -->
+
+<div class="section">
+
+<h2>💳 Recent Payment Transactions</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Student</th>
+<th>Event</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for payment in recent_payments %}
+
+<tr>
+
+<td>{{ payment.full_name }}</td>
+
+<td>{{ payment.title }}</td>
+
+<td>₹ {{ payment.amount }}</td>
+
+<td>
+
+{% if payment.payment_status=="Success" %}
+<span class="green">Success</span>
+
+{% elif payment.payment_status=="Pending" %}
+<span class="orange">Pending</span>
+
+{% else %}
+<span class="red">{{ payment.payment_status }}</span>
+
+{% endif %}
+
+</td>
+
+<td>{{ payment.payment_date }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- Recent Events -->
+
+<div class="section">
+
+<h2>📅 Latest Events</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Title</th>
+<th>Category</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for event in recent_events %}
+
+<tr>
+
+<td>{{ event.title }}</td>
+
+<td>{{ event.category }}</td>
+
+<td>{{ event.event_date }}</td>
+
+<td>{{ event.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- Back Button -->
+
+<div style="text-align:center;margin:40px 0;">
+
+<a href="{{ url_for('admin_dashboard') }}" class="dashboard-btn">
+
+🏠 Back Dashboard
+
+</a>
+
+</div>
+
+</div>
+
+<!-- ======================= CHART JS ======================= -->
+
+<script>
+/* ---------------- Payment Pie ---------------- */
+
+new Chart(document.getElementById("paymentChart"), {
+    type: "pie",
+
+    data: {
+        labels: ["Success", "Pending"],
+
+        datasets: [{
+            data: [
+                Number("{{ success_payments }}"),
+                Number("{{ pending_payments }}")
+            ],
+
+            backgroundColor: [
+                "#28a745",
+                "#ffc107"
+            ]
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        plugins: {
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
+});
+/* ---------------- Attendance ---------------- */
+new Chart(document.getElementById("attendanceChart"), {
+    type: "doughnut",
+
+    data: {
+        labels: ["Present", "Absent"],
+
+        datasets: [{
+            data: [
+                Number("{{ present }}"),
+                Number("{{ absent }}")
+            ],
+
+            backgroundColor: [
+                "#2196F3",
+                "#F44336"
+            ]
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        plugins: {
+            legend: {
+                position: "bottom"
+            }
+        }
+    }
+});
+/* ---------------- Campus overview  ---------------- */
+
+new Chart(document.getElementById("overviewChart"), {
+    type: "bar",
+
+    data: {
+        labels: JSON.parse('{{ overview_labels|safe }}'),
+
+        datasets: [{
+            // Empty label hides "Campus Overview" in tooltip
+            label: "",
+
+            data: JSON.parse('{{ overview_values|safe }}'),
+
+            backgroundColor: [
+                "#1E4D9B",   // Students
+                "#F4B400",   // Events
+                "#28A745",   // Registrations
+                "#FF5722"    // Certificates
+            ],
+
+            borderRadius: 8,
+            barThickness: 55,
+            maxBarThickness: 60
+        }]
+    },
+
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        plugins: {
+            // Hide top legend
+            legend: {
+                display: false
+            },
+
+            // Show Students:3, Events:7... on hover
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.label + ": " + context.raw;
+                    }
+                }
+            }
+        },
+
+        layout: {
+            padding: 10
+        },
+
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    precision: 0
+                }
+            },
+
+            x: {
+                ticks: {
+                    maxRotation: 0,
+                    minRotation: 0,
+                    autoSkip: false,
+                    font: {
+                        size: 13
+                    }
+                }
+            }
+        }
+    }
+});
+
+/* ---------------- Revenue ---------------- */
+
+new Chart(document.getElementById("revenueChart"), {
+    type: "bar",
+
+    data: {
+        labels: ["Revenue"],
+
+        datasets: [{
+            label: "Revenue",
+
+            data: [
+                Number("{{ total_revenue }}")
+            ],
+
+            backgroundColor: "#f4b400"
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

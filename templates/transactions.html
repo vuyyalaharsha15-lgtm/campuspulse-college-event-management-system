@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>CampusPulse | Transactions</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <style>
+
+        .approve-btn{
+            background:#28a745;
+            color:white;
+            padding:8px 15px;
+            text-decoration:none;
+            border-radius:5px;
+            font-weight:bold;
+        }
+
+        .approve-btn:hover{
+            background:#218838;
+        }
+
+        .pending{
+            color:orange;
+            font-weight:bold;
+        }
+
+        .approved{
+            color:green;
+            font-weight:bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <h1>💳 Payment Transactions</h1>
+
+    <table>
+
+        <tr>
+
+            <th>Student</th>
+
+            <th>Roll No</th>
+
+            <th>Event</th>
+
+            <th>Amount</th>
+
+            <th>Transaction ID</th>
+
+            <th>Status</th>
+
+            <th>Date</th>
+
+            <th>Action</th>
+
+        </tr>
+
+        {% for p in payments %}
+
+        <tr>
+
+            <td>{{ p.full_name }}</td>
+
+            <td>{{ p.student_id }}</td>
+
+            <td>{{ p.title }}</td>
+
+            <td>₹ {{ p.amount }}</td>
+
+            <td>{{ p.transaction_id }}</td>
+
+            <td>
+
+                {% if p.payment_status == "Pending" %}
+
+                    <span class="pending">⏳ Pending</span>
+
+                {% else %}
+
+                    <span class="approved">✅ Success</span>
+
+                {% endif %}
+
+            </td>
+
+            <td>{{ p.payment_date }}</td>
+
+            <td>
+
+                {% if p.payment_status == "Pending" %}
+
+                    <a href="{{ url_for('approve_payment', payment_id=p.id) }}"
+                       class="approve-btn">
+
+                        ✅ Approve
+
+                    </a>
+
+                {% else %}
+
+                    <span class="approved">
+
+                        ✔ Approved
+
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br><br>
+
+    <a href="{{ url_for('admin_dashboard') }}"
+       class="dashboard-btn">
+
+        🏠 Back Dashboard
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

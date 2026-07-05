@@ -1,0 +1,466 @@
+/* ==========================
+   CampusPulse Admin Login
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+
+    overflow:hidden;
+
+    color:white;
+
+}
+
+/* ==========================
+     Background Animation
+========================== */
+
+.background{
+
+    position:fixed;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:-1;
+
+}
+
+.bubble{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    animation:float 12s infinite linear;
+
+}
+
+.b1{
+
+    width:170px;
+
+    height:170px;
+
+    top:10%;
+
+    left:8%;
+
+}
+
+.b2{
+
+    width:120px;
+
+    height:120px;
+
+    bottom:10%;
+
+    left:18%;
+
+}
+
+.b3{
+
+    width:220px;
+
+    height:220px;
+
+    top:18%;
+
+    right:10%;
+
+}
+
+.b4{
+
+    width:150px;
+
+    height:150px;
+
+    bottom:8%;
+
+    right:15%;
+
+}
+
+.b5{
+
+    width:80px;
+
+    height:80px;
+
+    top:50%;
+
+    left:50%;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* ==========================
+        Main Container
+========================== */
+
+.container{
+
+    width:1100px;
+
+    display:flex;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.35);
+
+}
+
+/* ==========================
+        Left Side
+========================== */
+
+.left{
+
+    width:50%;
+
+    padding:60px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:40px;
+
+}
+
+.logo i{
+
+    font-size:45px;
+
+    color:#38bdf8;
+
+}
+
+.logo h1{
+
+    font-size:36px;
+
+}
+
+.logo span{
+
+    color:#38bdf8;
+
+}
+
+.left h2{
+
+    font-size:34px;
+
+    margin-bottom:20px;
+
+}
+
+.left p{
+
+    line-height:1.8;
+
+    color:#dbeafe;
+
+    margin-bottom:35px;
+
+}
+
+.features div{
+
+    margin:18px 0;
+
+    font-size:18px;
+
+}
+
+.features i{
+
+    color:#38bdf8;
+
+    margin-right:15px;
+
+}
+
+/* ==========================
+        Right Side
+========================== */
+
+.right{
+
+    width:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+.login-card{
+
+    width:100%;
+
+    max-width:430px;
+
+    background:rgba(255,255,255,.12);
+
+    padding:45px;
+
+    border-radius:25px;
+
+    backdrop-filter:blur(15px);
+
+    text-align:center;
+
+}
+
+.admin-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+}
+
+.admin-icon i{
+
+    font-size:42px;
+
+}
+
+.login-card h2{
+
+    font-size:32px;
+
+}
+
+.login-card p{
+
+    color:#dbeafe;
+
+    margin:15px 0 30px;
+
+}
+
+/* ==========================
+         Inputs
+========================== */
+
+.input-box{
+
+    position:relative;
+
+    margin-bottom:20px;
+
+}
+
+.input-box i{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    color:#38bdf8;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:16px 16px 16px 50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.input-box input::placeholder{
+
+    color:#dbeafe;
+
+}
+
+/* ==========================
+        Button
+========================== */
+
+button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    margin-top:10px;
+
+}
+
+button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.45);
+
+}
+
+/* ==========================
+      Back Button
+========================== */
+
+.home{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    text-decoration:none;
+
+    color:#38bdf8;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.home:hover{
+
+    color:white;
+
+}
+
+/* ==========================
+       Responsive
+========================== */
+
+@media(max-width:900px){
+
+.container{
+
+flex-direction:column;
+
+width:95%;
+
+}
+
+.left,
+
+.right{
+
+width:100%;
+
+}
+
+.left{
+
+padding:40px;
+
+}
+
+.login-card{
+
+max-width:100%;
+
+}
+
+}

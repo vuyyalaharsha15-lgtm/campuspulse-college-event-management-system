@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Edit Event</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='css/add_event.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+
+<i class="fa-solid fa-pen"></i>
+
+Edit Event
+
+</h1>
+
+<form method="POST">
+
+<div class="input">
+
+<label>Title</label>
+
+<input
+type="text"
+name="title"
+value="{{ event.title }}"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Description</label>
+
+<textarea
+name="description"
+rows="5"
+required>{{ event.description }}</textarea>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Category</label>
+
+<input
+type="text"
+name="category"
+value="{{ event.category }}"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Venue</label>
+
+<input
+type="text"
+name="venue"
+value="{{ event.venue }}"
+required>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Date</label>
+
+<input
+type="date"
+name="event_date"
+value="{{ event.event_date }}"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Time</label>
+
+<input
+type="time"
+name="event_time"
+value="{{ event.event_time }}"
+required>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Maximum Participants</label>
+
+<input
+type="number"
+name="max_participants"
+value="{{ event.max_participants }}"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Status</label>
+
+<select name="status">
+
+<option
+value="Open"
+{% if event.status=="Open" %}selected{% endif %}>
+Open
+</option>
+
+<option
+value="Closed"
+{% if event.status=="Closed" %}selected{% endif %}>
+Closed
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button type="submit">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Update Event
+
+</button>
+
+<a href="/manage_events">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

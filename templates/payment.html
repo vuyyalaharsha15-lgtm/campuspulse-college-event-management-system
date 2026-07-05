@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusPulse Payment</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #0B3D91;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #0B3D91;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #062a66;
+        }
+
+        .qr {
+            margin-top: 15px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: gray;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>💳 Payment Page</h1>
+
+        <h2>{{ event.title }}</h2>
+
+        <p><b>Venue:</b> {{ event.venue }}</p>
+        <p><b>Date:</b> {{ event.event_date }}</p>
+        <p><b>Fee:</b> ₹{{ event.fee }}</p>
+
+        <!-- QR CODE -->
+        <div class="qr">
+            <img src="{{ url_for('static', filename='images/payment_qr.png') }}"
+                 width="220">
+        </div>
+
+        <p class="note">
+            Scan QR and complete payment, then submit request.
+        </p>
+
+        <!-- FINAL BUTTON -->
+        <a href="{{ url_for('create_payment', event_id=event.id) }}"
+           class="btn">
+            ✅ I Have Paid
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Certificates</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a2a66, #001f3f);
+            font-family: Arial, sans-serif;
+        }
+
+        .main-content {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th {
+            background: rgba(0,0,0,0.4);
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.12);
+            transition: 0.3s;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .download-btn {
+            background: #007BFF;
+        }
+
+        .download-btn:hover {
+            background: #0056b3;
+        }
+
+        .back-btn {
+            background: red;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .no-data {
+            color: white;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <h1>🏆 My Certificates</h1>
+
+    <!-- ❌ REMOVED DEBUG LINE (this was causing black JSON text) -->
+    <!-- {{ certificates }} -->
+
+    {% if certificates and certificates|length > 0 %}
+
+    <table>
+
+        <tr>
+            <th>Event</th>
+            <th>Certificate No</th>
+            <th>Date</th>
+            <th>Download</th>
+        </tr>
+
+        {% for c in certificates %}
+        <tr>
+            <td>{{ c.title }}</td>
+            <td>{{ c.certificate_no }}</td>
+            <td>{{ c.issue_date }}</td>
+
+            <td>
+                <a href="/download_certificate/{{ c.student_id }}/{{ c.event_id }}"
+                   class="btn download-btn">
+                    📥 Download PDF
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <h3 class="no-data">
+        No certificates found
+    </h3>
+
+    {% endif %}
+
+    <div class="button-container">
+        <a href="/student_dashboard" class="back-btn">
+            🏠 Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

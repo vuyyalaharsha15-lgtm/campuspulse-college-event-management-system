@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Student Dashboard</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+
+<div class="dashboard">
+
+    <h1>
+        <i class="fa-solid fa-graduation-cap"></i>
+        Student Dashboard
+    </h1>
+
+    <div class="card">
+
+        <h2>Welcome, {{ user.full_name }}</h2>
+
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            <strong>Email :</strong>
+            {{ user.email }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-id-card"></i>
+            <strong>Student ID :</strong>
+            {{ user.student_id }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-building-columns"></i>
+            <strong>Department :</strong>
+            {{ user.department }}
+        </p>
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            <strong>Phone :</strong>
+            {{ user.phone }}
+        </p>
+
+    </div>
+
+    <div class="button-container">
+
+        <a href="/events" class="dashboard-btn">
+            <i class="fa-solid fa-calendar-days"></i>
+            View Events
+        </a>
+
+        <a href="/my_events" class="dashboard-btn">
+            <i class="fa-solid fa-list-check"></i>
+            My Events
+        </a>
+
+        <a href="/my_certificates" class="dashboard-btn">
+            <i class="fa-solid fa-award"></i>
+            My Certificates
+        </a>
+
+        <a href="/my_payments" class="dashboard-btn">
+            <i class="fa-solid fa-credit-card"></i>
+            My Payments
+        </a>
+
+        <a href="/logout" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

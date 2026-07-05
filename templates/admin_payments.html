@@ -1,0 +1,27 @@
+<h1>💰 Payment Verification</h1>
+
+<table border="1">
+<tr>
+    <th>Student</th>
+    <th>Event</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for p in payments %}
+<tr>
+    <td>{{ p.full_name }}</td>
+    <td>{{ p.title }}</td>
+    <td>₹{{ p.amount }}</td>
+    <td>{{ p.payment_status }}</td>
+    <td>
+        {% if p.verified == 0 %}
+        <a href="/approve_payment/{{ p.id }}">Approve</a>
+        {% else %}
+        ✅ Approved
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>

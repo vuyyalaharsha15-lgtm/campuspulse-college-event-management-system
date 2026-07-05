@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}CampusPulse - Smart College Event Management System{% endblock %}</title>
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!--========== NAVBAR ==========-->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                <div>
+
+                    <h2>CampusPulse</h2>
+
+                    <span>Smart College Event Management System</span>
+
+                </div>
+
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="/" class="active">Home</a></li>
+
+                <li><a href="/events">Events</a></li>
+
+                <li><a href="/about">About</a></li>
+
+                <li><a href="/contact">Contact</a></li>
+
+            </ul>
+
+            <div class="buttons">
+
+                <a href="/login" class="login-btn">
+
+                    Login
+
+                </a>
+
+                <a href="/register" class="register-btn">
+
+                    Register
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!--========== FOOTER ==========-->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <h2>CampusPulse</h2>
+
+            <p>
+
+                Smart College Event Management System
+
+            </p>
+
+            <div class="social">
+
+                <i class="fab fa-facebook"></i>
+
+                <i class="fab fa-instagram"></i>
+
+                <i class="fab fa-twitter"></i>
+
+                <i class="fab fa-linkedin"></i>
+
+            </div>
+
+            <p class="copy">
+
+                © 2026 CampusPulse | All Rights Reserved
+
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

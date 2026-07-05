@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Registrations</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <h1 style="text-align:center; margin-bottom:30px;">
+        <i class="fa-solid fa-clipboard-list"></i>
+        Event Registrations
+    </h1>
+
+    <!-- Search -->
+
+    <form class="search-form" method="GET" action="/registrations">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="🔍 Search Student Name, Student ID or Event"
+            value="{{ request.args.get('search','') }}">
+
+        <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search
+        </button>
+
+    </form>
+
+    <br><br>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Student ID</th>
+            <th>Event</th>
+            <th>Category</th>
+            <th>Event Date</th>
+            <th>Action</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if registrations %}
+
+            {% for reg in registrations %}
+
+            <tr>
+
+                <td>{{ reg.id }}</td>
+
+                <td>{{ reg.full_name }}</td>
+
+                <td>{{ reg.student_id }}</td>
+
+                <td>{{ reg.title }}</td>
+
+                <td>{{ reg.category }}</td>
+
+                <td>{{ reg.event_date }}</td>
+
+                <td>
+
+                    <a href="/delete_registration/{{ reg.id }}"
+                       class="delete-btn"
+                       onclick="return confirm('Are you sure you want to remove this registration?');">
+
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="7" style="padding:25px;">
+                    No registrations found.
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+    <div class="button-container" style="margin-top:35px;">
+
+        <a href="/admin_dashboard" class="dashboard-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Admin Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin_login.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Background Animation -->
+
+<div class="background">
+
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+    <span class="bubble b4"></span>
+    <span class="bubble b5"></span>
+
+</div>
+
+<div class="container">
+
+    <!-- Left Side -->
+
+    <div class="left">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+            <h1>Campus<span>Pulse</span></h1>
+
+        </div>
+
+        <h2>Administrator Portal</h2>
+
+        <p>
+
+            Login to manage college events, students,
+            registrations, certificates and reports.
+
+        </p>
+
+        <div class="features">
+
+            <div>
+
+                <i class="fa-solid fa-calendar-plus"></i>
+
+                Add Events
+
+            </div>
+
+            <div>
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                Manage Events
+
+            </div>
+
+            <div>
+
+                <i class="fa-solid fa-users"></i>
+
+                Student Management
+
+            </div>
+
+            <div>
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Reports & Analytics
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Right Side -->
+
+    <div class="right">
+
+        <div class="login-card">
+
+            <div class="admin-icon">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+            </div>
+
+            <h2>Admin Login</h2>
+
+            <p>Sign in to continue</p>
+
+            <form method="POST" action="/admin_login">
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Admin Email"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required>
+
+                </div>
+
+                <button type="submit">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </button>
+
+            </form>
+
+            <a href="/" class="home">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

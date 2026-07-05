@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CampusPulse | Add Event</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='css/add_event.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>
+
+<i class="fa-solid fa-calendar-plus"></i>
+
+Add New Event
+
+</h1>
+
+<form method="POST" action="/add_event">
+
+<div class="input">
+
+<label>Event Title</label>
+
+<input
+type="text"
+name="title"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Description</label>
+
+<textarea
+name="description"
+rows="5"
+required></textarea>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Category</label>
+
+<select name="category">
+
+<option>Technical</option>
+
+<option>Cultural</option>
+
+<option>Sports</option>
+
+<option>Workshop</option>
+
+<option>Hackathon</option>
+
+<option>Seminar</option>
+
+</select>
+
+</div>
+
+<div class="input">
+
+<label>Venue</label>
+
+<input
+type="text"
+name="venue"
+required>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Event Date</label>
+
+<input
+type="date"
+name="event_date"
+required>
+
+</div>
+
+<div class="input">
+
+<label>Event Time</label>
+
+<input
+type="time"
+name="event_time"
+required>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="input">
+
+<label>Coordinator ID</label>
+
+<input
+type="number"
+name="coordinator_id">
+
+</div>
+
+<div class="input">
+
+<label>Maximum Participants</label>
+
+<input
+type="number"
+name="max_participants">
+
+</div>
+
+</div>
+
+<!-- NEW EVENT FEE -->
+
+<div class="input">
+
+<label>Event Fee (₹)</label>
+
+<input
+type="number"
+name="fee"
+placeholder="Enter Event Fee"
+min="0"
+required>
+
+</div>
+
+<div class="buttons">
+
+<button type="submit">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Event
+
+</button>
+
+<a href="/admin_dashboard">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back Dashboard
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Available Events</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/events.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎉 Available Events</h1>
+
+    {% if events %}
+
+        {% for event in events %}
+
+        <div class="card">
+
+            <h2>{{ event.title }}</h2>
+
+            <p>{{ event.description }}</p>
+
+            <p><strong>Category:</strong> {{ event.category }}</p>
+
+            <p><strong>Venue:</strong> {{ event.venue }}</p>
+
+            <p><strong>Date:</strong> {{ event.event_date }}</p>
+
+            <p><strong>Time:</strong> {{ event.event_time }}</p>
+
+            <p class="fee">
+                <strong>💰 Event Fee:</strong>
+
+                {% if event.fee and event.fee > 0 %}
+                    ₹ {{ event.fee }}
+                {% else %}
+                    FREE
+                {% endif %}
+            </p>
+
+            {% if event.fee and event.fee > 0 %}
+
+                <a href="{{ url_for('payment_page', event_id=event.id) }}"
+                  class="pay-btn">
+
+                    💳 Pay ₹{{ event.fee }} & Register
+
+                </a>
+
+            {% else %}
+
+                <a href="/register_event/{{ event.id }}"
+                   class="free-btn">
+
+                    ✅ Register Free
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="card">
+
+            <h2>No Events Available</h2>
+
+            <p>Please check back later.</p>
+
+        </div>
+
+    {% endif %}
+
+    <div class="bottom-buttons">
+
+        <a href="/student_dashboard"
+           class="dashboard-btn">
+
+            🏠 Dashboard
+
+        </a>
+
+        <a href="/my_events"
+           class="myevents-btn">
+
+            📋 My Events
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

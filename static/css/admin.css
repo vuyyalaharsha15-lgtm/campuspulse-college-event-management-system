@@ -1,0 +1,741 @@
+/* =========================
+   CampusPulse Admin Theme
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+
+    color:#fff;
+
+}
+
+/* =========================
+        Sidebar
+========================= */
+
+.sidebar{
+
+    width:260px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-right:1px solid rgba(255,255,255,.15);
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    padding:25px;
+
+}
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.logo i{
+
+    font-size:48px;
+
+    color:#38bdf8;
+
+    margin-bottom:10px;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+
+}
+
+.logo span{
+
+    color:#38bdf8;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar ul li{
+
+    margin:15px 0;
+
+}
+
+.sidebar ul li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+}
+
+.sidebar ul li a i{
+
+    width:25px;
+
+    text-align:center;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+    transform:translateX(6px);
+
+}
+
+.sidebar ul li.active a{
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+}
+
+/* =========================
+      Main Content
+========================= */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    padding:35px;
+
+}
+
+/* =========================
+        Topbar
+========================= */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.topbar h1{
+
+    font-size:34px;
+
+}
+
+.admin-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:rgba(255,255,255,.12);
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+}
+
+.admin-info i{
+
+    font-size:22px;
+
+}
+
+/* =========================
+      Statistics Cards
+========================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.30);
+
+}
+
+.card i{
+
+    font-size:45px;
+
+    color:#38bdf8;
+
+    margin-bottom:15px;
+
+}
+
+.card h2{
+
+    font-size:38px;
+
+    margin-bottom:8px;
+
+}
+
+.card p{
+
+    color:#dbeafe;
+
+}
+
+/* =========================
+      Sections
+========================= */
+
+.section{
+
+    margin-top:45px;
+
+}
+
+.section h2{
+
+    margin-bottom:20px;
+
+}
+
+/* =========================
+     Quick Action Cards
+========================= */
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.quick-card{
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    padding:35px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.35s;
+
+}
+
+.quick-card:hover{
+
+    transform:translateY(-6px);
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+}
+
+.quick-card i{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+}
+
+.quick-card h3{
+
+    font-size:20px;
+
+}
+
+/* =========================
+          Tables
+========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+th{
+
+    background:#2563eb;
+
+    padding:16px;
+
+}
+
+td{
+
+    padding:16px;
+
+    text-align:center;
+
+}
+
+tr:nth-child(even){
+
+    background:rgba(255,255,255,.05);
+
+}
+
+tr:hover{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+/* =========================
+        Status Badge
+========================= */
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:25px;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+/* =========================
+      Scrollbar
+========================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#38bdf8;
+
+    border-radius:10px;
+
+}
+
+/* =========================
+      Responsive
+========================= */
+
+@media(max-width:900px){
+
+.sidebar{
+
+    width:90px;
+
+}
+
+.logo h2{
+
+    display:none;
+
+}
+
+.sidebar ul li a{
+
+    justify-content:center;
+
+}
+
+.sidebar ul li a span{
+
+    display:none;
+
+}
+
+.main-content{
+
+    margin-left:90px;
+
+    width:calc(100% - 90px);
+
+}
+
+}
+
+@media(max-width:700px){
+
+.topbar{
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.stats{
+
+    grid-template-columns:1fr;
+
+}
+
+.quick-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+table{
+
+    font-size:14px;
+
+}
+
+}
+.edit-btn{
+
+background:#2563eb;
+
+padding:8px 15px;
+
+border-radius:8px;
+
+color:white;
+
+text-decoration:none;
+
+margin-right:8px;
+
+}
+
+.delete-btn{
+
+background:#dc2626;
+
+padding:8px 15px;
+
+border-radius:8px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+.dashboard-btn{
+
+display:inline-block;
+
+margin-top:25px;
+
+background:#2563eb;
+
+padding:12px 30px;
+
+border-radius:30px;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+
+.edit-btn:hover,
+.delete-btn:hover,
+.dashboard-btn:hover{
+
+opacity:.85;
+
+}
+/* =========================
+        Tables
+========================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+th{
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+    color:white;
+
+    padding:16px;
+
+}
+
+td{
+
+    padding:16px;
+
+    text-align:center;
+
+    color:white;
+
+    border-bottom:1px solid rgba(255,255,255,.10);
+
+}
+
+tr:nth-child(even){
+
+    background:rgba(255,255,255,.04);
+
+}
+
+tr:hover{
+
+    background:rgba(255,255,255,.12);
+
+}
+/* =========================
+      Search Form
+========================= */
+
+.search-form{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:30px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.search-form input{
+
+    width:380px;
+
+    max-width:90%;
+
+    padding:14px 18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    font-size:16px;
+
+    border:2px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+
+}
+
+.search-form input::placeholder{
+
+    color:#dbeafe;
+
+}
+
+.search-form input:focus{
+
+    border-color:#facc15;
+
+    box-shadow:0 0 18px rgba(250,204,21,.45);
+
+}
+
+.search-form button{
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    color:#0f172a;
+
+    background:linear-gradient(135deg,#facc15,#fde047);
+
+    transition:.3s;
+
+    box-shadow:0 8px 18px rgba(250,204,21,.35);
+
+}
+
+.search-form button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 25px rgba(250,204,21,.45);
+
+}
+
+.search-form button i{
+
+    margin-right:8px;
+
+}
+
+/* =========================
+   Search Form
+========================= */
+
+.search-form{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+
+}
+
+.search-form input{
+
+    width:420px;
+    max-width:90%;
+    padding:14px 18px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    font-size:16px;
+
+}
+
+.search-form button{
+
+    background:linear-gradient(135deg,#facc15,#eab308);
+    color:#111827;
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.search-form button:hover{
+
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(250,204,21,.4);
+
+}

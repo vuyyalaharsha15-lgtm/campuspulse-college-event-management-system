@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CampusPulse | Register</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='css/register.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="background">
+
+<div class="bubble b1"></div>
+<div class="bubble b2"></div>
+<div class="bubble b3"></div>
+<div class="bubble b4"></div>
+
+</div>
+
+<div class="container">
+
+<div class="left">
+
+<div class="logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<h1>Campus<span>Pulse</span></h1>
+
+</div>
+
+<h2>
+
+Create Your Account
+
+</h2>
+
+<p>
+
+Join thousands of students participating in technical fests,
+workshops, hackathons, sports, cultural events and seminars.
+
+</p>
+
+<div class="feature">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Easy Event Registration
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Instant Notifications
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Certificates Download
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Student Dashboard
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="register-card">
+
+<h2>Create Account</h2>
+
+<p>
+
+Register to CampusPulse
+
+</p>
+
+<form action="/register" method="POST">
+
+<div class="input">
+
+<i class="fa-solid fa-user"></i>
+
+<input type="text" name="full_name" placeholder="Full Name" required>
+
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+name="email"
+placeholder="Email Address"
+required>
+
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-id-card"></i>
+
+<input type="text" name="student_id" placeholder="Student ID" required>
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-building-columns"></i>
+
+<input
+type="text"
+name="department"
+placeholder="Department"
+required>
+
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-phone"></i>
+
+<input
+type="text"
+name="phone"
+placeholder="Phone Number"
+required>
+
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+</div>
+
+<div class="input">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+name="confirm"
+placeholder="Confirm Password"
+required>
+
+</div>
+
+<label class="terms">
+
+<input type="checkbox" required>
+
+I agree to the Terms & Conditions
+
+</label>
+
+<button type="submit">
+
+Create Account
+
+</button>
+
+</form>
+
+<div class="login-link">
+
+Already have an account?
+
+<a href="/login">
+
+Login
+
+</a>
+
+</div>
+
+<a href="/" class="home">
+
+← Back To Home
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

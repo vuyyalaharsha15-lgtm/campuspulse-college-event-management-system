@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Payments</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+<h1>💳 My Payments</h1>
+
+<table>
+
+<tr>
+
+<th>Event</th>
+<th>Amount</th>
+<th>Transaction ID</th>
+<th>Status</th>
+<th>Payment State</th>
+<th>Date</th>
+
+</tr>
+
+{% for p in payments %}
+
+<tr>
+
+<td>{{ p.title }}</td>
+
+<td>₹ {{ p.amount }}</td>
+
+<td>{{ p.transaction_id }}</td>
+
+<td>
+    {{ p.payment_status }}
+</td>
+
+<!-- ✅ NEW FIXED LOGIC -->
+<td>
+    {% if p.payment_status == "Success" and p.verified == 1 %}
+        <span style="color:green; font-weight:bold;">✅ Approved</span>
+    {% else %}
+        <span style="color:orange; font-weight:bold;">⏳ Pending</span>
+    {% endif %}
+</td>
+
+<td>{{ p.payment_date }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/student_dashboard" class="dashboard-btn">
+🏠 Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

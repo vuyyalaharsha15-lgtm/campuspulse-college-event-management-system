@@ -1,0 +1,1710 @@
+/* =====================================
+   GOOGLE FONT
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =====================================
+   RESET
+===================================== */
+
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+
+    background:#08122d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =====================================
+   SCROLL BAR
+===================================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#08122d;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ffc107;
+    border-radius:20px;
+}
+
+/* =====================================
+   BACKGROUND
+===================================== */
+
+.bg-animation{
+
+    position:fixed;
+    inset:0;
+
+    overflow:hidden;
+    z-index:-10;
+
+    background:
+
+    radial-gradient(circle at top left,#4f2fff 0%,transparent 35%),
+
+    radial-gradient(circle at right,#1d6cff 0%,transparent 35%),
+
+    radial-gradient(circle at bottom,#6c2fff 0%,transparent 30%),
+
+    linear-gradient(135deg,#08122d,#142c72,#1a237e);
+}
+
+/* =====================================
+   ANIMATED CIRCLES
+===================================== */
+
+.circle{
+
+    position:absolute;
+    border-radius:50%;
+
+    filter:blur(4px);
+
+    animation:float 8s infinite ease-in-out;
+}
+
+.c1{
+
+    width:250px;
+    height:250px;
+
+    background:#5d3eff55;
+
+    top:80px;
+    left:-50px;
+}
+
+.c2{
+
+    width:320px;
+    height:320px;
+
+    background:#1f74ff44;
+
+    right:-100px;
+    top:120px;
+
+    animation-delay:2s;
+}
+
+.c3{
+
+    width:180px;
+    height:180px;
+
+    background:#ffc10755;
+
+    bottom:120px;
+    left:25%;
+}
+
+.c4{
+
+    width:250px;
+    height:250px;
+
+    background:#ffffff18;
+
+    right:20%;
+    bottom:-60px;
+}
+
+.c5{
+
+    width:150px;
+    height:150px;
+
+    background:#5e5eff33;
+
+    top:45%;
+    left:60%;
+}
+
+/* =====================================
+   FLOAT ANIMATION
+===================================== */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+nav{
+
+width:100%;
+
+height:90px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 8%;
+
+background:rgba(5,15,45,.65);
+
+backdrop-filter:blur(15px);
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+z-index:999;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:28px;
+
+font-weight:700;
+
+}
+
+.logo i{
+
+color:#ffc107;
+
+font-size:34px;
+
+}
+
+.logo span{
+
+color:#ffc107;
+
+}
+
+/* =====================================
+   MENU
+===================================== */
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:40px;
+
+}
+
+nav ul li a{
+
+text-decoration:none;
+
+color:white;
+
+font-size:17px;
+
+font-weight:500;
+
+transition:.4s;
+
+position:relative;
+
+}
+
+nav ul li a::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-10px;
+
+left:0;
+
+width:0;
+
+height:3px;
+
+background:#ffc107;
+
+transition:.4s;
+
+}
+
+nav ul li a:hover{
+
+color:#ffc107;
+
+}
+
+nav ul li a:hover::after{
+
+width:100%;
+
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.buttons{
+
+display:flex;
+
+gap:18px;
+
+}
+
+.login{
+
+padding:12px 30px;
+
+border-radius:12px;
+
+border:2px solid #4f7cff;
+
+text-decoration:none;
+
+color:white;
+
+transition:.4s;
+
+}
+
+.login:hover{
+
+background:#285bff;
+
+}
+
+.register{
+
+padding:12px 30px;
+
+background:#ffc107;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#111;
+
+transition:.4s;
+
+}
+
+.register:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 10px 25px rgba(255,193,7,.45);
+
+}
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero{
+
+padding:150px 8% 100px;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+align-items:center;
+
+gap:60px;
+
+min-height:100vh;
+
+}
+
+/* =====================================
+   LEFT SIDE
+===================================== */
+
+.tag{
+
+display:inline-block;
+
+padding:10px 22px;
+
+background:rgba(255,193,7,.15);
+
+border:1px solid rgba(255,193,7,.35);
+
+border-radius:50px;
+
+margin-bottom:25px;
+
+color:#ffd34e;
+
+font-size:15px;
+
+}
+
+.left h1{
+
+font-size:72px;
+
+line-height:1.15;
+
+font-weight:800;
+
+margin-bottom:25px;
+
+}
+
+.left h1 span{
+
+display:block;
+
+color:#ffc107;
+
+}
+
+.left p{
+
+font-size:19px;
+
+line-height:1.8;
+
+color:#d6d6d6;
+
+margin-bottom:35px;
+
+max-width:650px;
+
+}
+
+/* =====================================
+   HERO BUTTONS
+===================================== */
+
+.hero-btn{
+
+display:flex;
+
+gap:20px;
+
+margin-bottom:45px;
+
+}
+
+.btn1{
+
+padding:16px 38px;
+
+background:#ffc107;
+
+color:#111;
+
+font-weight:600;
+
+border-radius:15px;
+
+text-decoration:none;
+
+transition:.4s;
+
+}
+
+.btn1:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 15px 30px rgba(255,193,7,.5);
+
+}
+
+.btn2{
+
+padding:16px 38px;
+
+border:2px solid #4d7cff;
+
+border-radius:15px;
+
+text-decoration:none;
+
+color:white;
+
+transition:.4s;
+
+}
+
+.btn2:hover{
+
+background:#2d63ff;
+
+}
+/* =====================================
+   RIGHT SIDE HERO
+===================================== */
+
+.right{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+.dashboard{
+
+    width:520px;
+    min-height:420px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    padding:25px;
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.35),
+    0 0 60px rgba(95,92,255,.25);
+
+    position:relative;
+
+    overflow:hidden;
+
+    animation:dashboardFloat 6s ease-in-out infinite;
+}
+
+.dashboard::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:#6f49ff;
+
+    border-radius:50%;
+
+    top:-80px;
+    right:-60px;
+
+    filter:blur(70px);
+
+    opacity:.5;
+}
+
+.dashboard::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:#1d8cff;
+
+    border-radius:50%;
+
+    bottom:-90px;
+    left:-70px;
+
+    filter:blur(80px);
+
+    opacity:.45;
+}
+
+/* =====================================
+   DASHBOARD TOPBAR
+===================================== */
+
+.topbar{
+
+    display:flex;
+    gap:10px;
+
+    margin-bottom:30px;
+}
+
+.dot{
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+}
+
+.red{
+
+    background:#ff5f57;
+}
+
+.yellow{
+
+    background:#ffbd2f;
+}
+
+.green{
+
+    background:#28c840;
+}
+
+.dashboard h3{
+
+    font-size:24px;
+
+    margin-bottom:30px;
+
+    font-weight:700;
+}
+
+/* =====================================
+   EVENT GRID
+===================================== */
+
+.event-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.event{
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+    transition:.4s;
+
+    cursor:pointer;
+}
+
+.event:hover{
+
+    transform:translateY(-10px) scale(1.04);
+
+    background:rgba(255,255,255,.15);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.event i{
+
+    font-size:42px;
+
+    color:#ffc107;
+
+    margin-bottom:15px;
+}
+
+.event h4{
+
+    margin-bottom:18px;
+
+    font-size:18px;
+}
+
+.event button{
+
+    border:none;
+
+    background:#ffc107;
+
+    color:#111;
+
+    padding:10px 20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.event button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 10px 25px rgba(255,193,7,.45);
+}
+
+/* =====================================
+   FLOATING ICONS
+===================================== */
+
+.float{
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border-radius:20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.25);
+
+    animation:floatIcon 4s ease-in-out infinite;
+}
+
+.float i{
+
+    color:#ffc107;
+}
+
+.bell{
+
+    top:-35px;
+    left:-30px;
+}
+
+.calendar{
+
+    bottom:30px;
+    left:-40px;
+
+    animation-delay:1s;
+}
+
+.trophy{
+
+    top:40px;
+    right:-35px;
+
+    animation-delay:2s;
+}
+
+/* =====================================
+   STUDENT AVATARS
+===================================== */
+
+.student{
+
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#7c4dff,#3d8bff);
+
+    border:4px solid rgba(255,255,255,.18);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+    animation:studentFloat 5s ease-in-out infinite;
+}
+
+.student i{
+
+    font-size:38px;
+
+    color:white;
+}
+
+.one{
+
+    bottom:-20px;
+    left:30px;
+}
+
+.two{
+
+    bottom:-45px;
+    left:160px;
+
+    animation-delay:1s;
+}
+
+.three{
+
+    bottom:-20px;
+    right:30px;
+
+    animation-delay:2s;
+}
+
+/* =====================================
+   STATISTICS
+===================================== */
+
+.stats{
+
+    display:flex;
+
+    gap:25px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+}
+
+.card{
+
+    width:170px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:25px;
+
+    transition:.4s;
+
+    cursor:pointer;
+}
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    background:rgba(255,255,255,.14);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+
+.card i{
+
+    font-size:34px;
+
+    color:#ffc107;
+
+    margin-bottom:15px;
+}
+
+.card h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+}
+
+.card p{
+
+    color:#d9d9d9;
+
+    font-size:15px;
+}
+
+/* =====================================
+   GLOW EFFECTS
+===================================== */
+
+.dashboard,
+.card,
+.event,
+.student,
+.float{
+
+    transition:all .4s ease;
+}
+
+.dashboard:hover{
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.45),
+    0 0 80px rgba(74,102,255,.40);
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes dashboardFloat{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+@keyframes floatIcon{
+
+0%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+50%{
+
+transform:translateY(-15px) rotate(8deg);
+
+}
+
+100%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+}
+
+@keyframes studentFloat{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+/* =====================================
+   FEATURES SECTION
+===================================== */
+
+.features{
+
+    position:relative;
+
+    margin-top:100px;
+
+    background:#ffffff;
+
+    color:#111;
+
+    border-radius:80px 80px 0 0;
+
+    padding:120px 8%;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Background */
+
+.features::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    background:rgba(79,47,255,.08);
+
+    border-radius:50%;
+
+    top:-180px;
+    right:-180px;
+
+}
+
+.features::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    background:rgba(0,153,255,.08);
+
+    border-radius:50%;
+
+    bottom:-150px;
+    left:-150px;
+
+}
+
+.features h4{
+
+    text-align:center;
+
+    color:#4f5dff;
+
+    letter-spacing:2px;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+    text-transform:uppercase;
+
+}
+
+.features h1{
+
+    text-align:center;
+
+    font-size:50px;
+
+    margin-bottom:70px;
+
+    font-weight:700;
+
+    color:#111;
+
+}
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.feature-card{
+
+    background:#fff;
+
+    padding:40px 30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.4s;
+
+    border:1px solid #eee;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 25px 55px rgba(0,0,0,.12);
+
+}
+
+.feature-card i{
+
+    width:85px;
+
+    height:85px;
+
+    line-height:85px;
+
+    border-radius:50%;
+
+    font-size:34px;
+
+    background:linear-gradient(135deg,#4f2fff,#2d8cff);
+
+    color:#fff;
+
+    margin-bottom:25px;
+
+    box-shadow:0 15px 30px rgba(79,47,255,.25);
+
+}
+
+.feature-card h3{
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+    color:#222;
+
+}
+
+.feature-card p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* =====================================
+   EXTRA FLOATING BLOBS
+===================================== */
+
+.features .blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    opacity:.35;
+
+}
+
+.blob1{
+
+    width:250px;
+    height:250px;
+
+    background:#4f2fff;
+
+    top:80px;
+    left:50px;
+
+}
+
+.blob2{
+
+    width:220px;
+    height:220px;
+
+    background:#00a2ff;
+
+    bottom:60px;
+    right:60px;
+
+}
+
+/* =====================================
+   FADE ANIMATION
+===================================== */
+
+.feature-card{
+
+    animation:fadeUp .8s ease forwards;
+
+}
+
+.feature-card:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+.feature-card:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+.feature-card:nth-child(4){
+
+    animation-delay:.6s;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =====================================
+   BUTTON ANIMATION
+===================================== */
+
+.btn1,
+.btn2,
+.login,
+.register{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn1::before,
+.btn2::before,
+.login::before,
+.register::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:skewX(-25deg);
+
+    transition:.6s;
+
+}
+
+.btn1:hover::before,
+.btn2:hover::before,
+.login:hover::before,
+.register:hover::before{
+
+    left:120%;
+
+}
+
+/* =====================================
+   GENERAL TRANSITIONS
+===================================== */
+
+a,
+button,
+.card,
+.feature-card,
+.event,
+.student,
+.float{
+
+    transition:all .35s ease;
+
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:1200px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.left{
+
+order:2;
+
+}
+
+.right{
+
+order:1;
+
+margin-bottom:50px;
+
+}
+
+.hero-btn{
+
+justify-content:center;
+
+}
+
+.stats{
+
+justify-content:center;
+
+}
+
+.dashboard{
+
+width:100%;
+
+max-width:550px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+padding:15px 5%;
+
+flex-wrap:wrap;
+
+height:auto;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+.buttons{
+
+margin-top:10px;
+
+}
+
+.left h1{
+
+font-size:48px;
+
+}
+
+.left p{
+
+font-size:17px;
+
+}
+
+.dashboard{
+
+padding:20px;
+
+}
+
+.event-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.stats{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.card{
+
+width:100%;
+
+max-width:300px;
+
+}
+
+.features{
+
+border-radius:50px 50px 0 0;
+
+padding:80px 6%;
+
+}
+
+.features h1{
+
+font-size:36px;
+
+}
+
+.feature-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.float{
+
+display:none;
+
+}
+
+.student{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.left h1{
+
+font-size:38px;
+
+}
+
+.tag{
+
+font-size:13px;
+
+}
+
+.hero-btn{
+
+flex-direction:column;
+
+}
+
+.btn1,
+.btn2{
+
+width:100%;
+
+text-align:center;
+
+}
+
+.logo h2{
+
+font-size:24px;
+
+}
+
+.dashboard h3{
+
+font-size:20px;
+
+}
+
+}
+
+/* ===========================
+   Navigation Buttons
+=========================== */
+
+.buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.login,
+.register,
+.admin-login{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+/* Login */
+
+.login{
+
+    background:rgba(255,255,255,.15);
+
+    border:1px solid rgba(255,255,255,.25);
+
+}
+
+.login:hover{
+
+    background:#2563eb;
+
+    transform:translateY(-3px);
+
+}
+
+/* Register */
+
+.register{
+
+    background:linear-gradient(135deg,#3b82f6,#06b6d4);
+
+    box-shadow:0 8px 20px rgba(59,130,246,.35);
+
+}
+
+.register:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(59,130,246,.45);
+
+}
+
+/* Admin */
+
+.admin-login{
+
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+
+    box-shadow:0 8px 20px rgba(29,78,216,.35);
+
+}
+
+.admin-login:hover{
+
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.45);
+
+}
+/* Popup */
+
+.popup{
+
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.55);
+
+backdrop-filter:blur(6px);
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+}
+
+.popup-box{
+
+width:420px;
+
+padding:35px;
+
+text-align:center;
+
+border-radius:20px;
+
+background:linear-gradient(135deg,#1E3A8A,#2563EB);
+
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:0 15px 40px rgba(0,0,0,.45);
+
+animation:popup .35s ease;
+
+}
+
+@keyframes popup{
+
+from{
+transform:scale(.7);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+.popup-box h2{
+
+color:#FFD54F;
+margin-bottom:18px;
+
+}
+
+.popup-box p{
+
+color:white;
+font-size:18px;
+line-height:30px;
+margin-bottom:25px;
+
+}
+
+.popup-buttons{
+
+display:flex;
+justify-content:center;
+gap:15px;
+
+}
+
+.popup-register{
+
+padding:12px 24px;
+
+background:#FFD54F;
+
+color:#0B3D91;
+
+font-weight:bold;
+
+text-decoration:none;
+
+border-radius:10px;
+
+}
+
+.popup-register:hover{
+
+background:#FFC107;
+
+}
+
+.popup-buttons button{
+
+padding:12px 24px;
+
+border:none;
+
+border-radius:10px;
+
+background:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* =====================================
+   END OF FILE
+===================================== */

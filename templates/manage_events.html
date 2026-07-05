@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Manage Events</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='css/admin.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-content">
+
+<h1>📅 Manage Events</h1>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Title</th>
+
+<th>Category</th>
+
+<th>Venue</th>
+
+<th>Date</th>
+
+<th>Time</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+{% for event in events %}
+
+<tr>
+
+<td>{{ event.id }}</td>
+
+<td>{{ event.title }}</td>
+
+<td>{{ event.category }}</td>
+
+<td>{{ event.venue }}</td>
+
+<td>{{ event.event_date }}</td>
+
+<td>{{ event.event_time }}</td>
+
+<td>{{ event.status }}</td>
+
+<td>
+
+<a href="/edit_event/{{ event.id }}"
+class="edit-btn">
+
+<i class="fa-solid fa-pen"></i>
+
+Edit
+
+</a>
+
+<a href="/delete_event/{{ event.id }}"
+class="delete-btn"
+onclick="return confirm('Delete this event?')">
+
+<i class="fa-solid fa-trash"></i>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/admin_dashboard"
+class="dashboard-btn">
+
+⬅ Back Dashboard
+
+</a>
+
+</div>
+
+</body>
+
+</html>

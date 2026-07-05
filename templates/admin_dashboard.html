@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusPulse | Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+        <h2>Campus<span>Pulse</span></h2>
+
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <a href="/admin_dashboard">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="/add_event">
+                <i class="fa-solid fa-calendar-plus"></i>
+                Add Event
+            </a>
+        </li>
+
+        <li>
+            <a href="/manage_events">
+                <i class="fa-solid fa-calendar-days"></i>
+                Manage Events
+            </a>
+        </li>
+
+        <li>
+            <a href="/students">
+                <i class="fa-solid fa-users"></i>
+                Students
+            </a>
+        </li>
+
+        <li>
+            <a href="/registrations">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Registrations
+            </a>
+        </li>
+
+        <!-- NEW ATTENDANCE -->
+
+        <li>
+            <a href="/attendance">
+                <i class="fa-solid fa-user-check"></i>
+                Attendance
+            </a>
+        </li>
+
+        <li>
+            <a href="/certificates">
+                <i class="fa-solid fa-award"></i>
+                Certificates
+            </a>
+        </li>
+        <li>
+            <a href="/transactions">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                Transactions
+            </a>
+       </li>
+        <li>
+            <a href="/reports">
+                <i class="fa-solid fa-chart-column"></i>
+                Reports
+            </a>
+        </li>
+
+        <li>
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h1>Admin Dashboard</h1>
+
+        <div class="admin-info">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+            <span>Administrator</span>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="stats">
+
+        <div class="card">
+
+            <i class="fa-solid fa-user-graduate"></i>
+
+            <h2>{{ total_students }}</h2>
+
+            <p>Total Students</p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <h2>{{ total_events }}</h2>
+
+            <p>Total Events</p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-user-check"></i>
+
+            <h2>{{ total_registrations }}</h2>
+
+            <p>Registrations</p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-award"></i>
+
+            <h2>{{ total_certificates }}</h2>
+
+            <p>Certificates</p>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="section">
+
+        <h2>⚡ Quick Actions</h2>
+
+        <div class="quick-grid">
+
+            <a href="/add_event" class="quick-card">
+
+                <i class="fa-solid fa-calendar-plus"></i>
+
+                <h3>Add Event</h3>
+
+            </a>
+
+            <a href="/manage_events" class="quick-card">
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                <h3>Manage Events</h3>
+
+            </a>
+
+            <a href="/students" class="quick-card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>Students</h3>
+
+            </a>
+
+            <!-- NEW ATTENDANCE -->
+
+            <a href="/attendance" class="quick-card">
+
+                <i class="fa-solid fa-user-check"></i>
+
+                <h3>Attendance</h3>
+
+            </a>
+
+            <a href="/certificates" class="quick-card">
+
+                <i class="fa-solid fa-award"></i>
+
+                <h3>Certificates</h3>
+
+            </a>
+
+            <a href="/transactions" class="quick-card">
+
+               <i class="fa-solid fa-money-bill-transfer"></i>
+
+              <h3>Transactions</h3>
+
+            </a>
+            <a href="/reports" class="quick-card">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <h3>Reports</h3>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Recent Events -->
+
+    <div class="section">
+
+        <h2>📅 Recent Events</h2>
+
+        <table>
+
+            <tr>
+
+                <th>Title</th>
+
+                <th>Category</th>
+
+                <th>Date</th>
+
+                <th>Status</th>
+
+            </tr>
+
+            {% for event in recent_events %}
+
+            <tr>
+
+                <td>{{ event.title }}</td>
+
+                <td>{{ event.category }}</td>
+
+                <td>{{ event.event_date }}</td>
+
+                <td>
+
+                    <span class="status">
+
+                        {{ event.status }}
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
