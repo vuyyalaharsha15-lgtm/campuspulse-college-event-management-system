@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector
 from flask import send_file
+from flask_mail import Mail, Message
 
 from reportlab.lib.colors import navy, gold, grey
 from reportlab.lib.colors import HexColor
@@ -18,6 +19,16 @@ import json
 
 app = Flask(__name__)
 app.secret_key = "campuspulse_secret"
+from flask_mail import Mail
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'campuspulsemanagement@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ienkpzlbfigavgid'
+app.config['MAIL_DEFAULT_SENDER'] = 'campuspulsemanagement@gmail.com'
+
+mail = Mail(app)
 
 
 # 🔌 MySQL Connection
@@ -49,16 +60,41 @@ def register():
         phone = request.form.get("phone")
         password = request.form.get("password")
 
+        # Generate OTP
+        otp = str(random.randint(100000, 999999))
+
         conn = get_db_connection()
         cursor = conn.cursor()
 
+        # Check if email already exists
+        cursor.execute(
+            "SELECT * FROM students WHERE email=%s",
+            (email,)
+        )
+
+        if cursor.fetchone():
+
+            cursor.close()
+            conn.close()
+
+            return "Email already registered."
+
         sql = """
-        INSERT INTO students 
-        (full_name, email, student_id, department, phone, password)
-        VALUES (%s, %s, %s, %s, %s, %s)
+        INSERT INTO students
+        (full_name, email, student_id, department, phone, password, otp, email_verified)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """
 
-        values = (full_name, email, student_id, department, phone, password)
+        values = (
+            full_name,
+            email,
+            student_id,
+            department,
+            phone,
+            password,
+            otp,
+            0
+        )
 
         cursor.execute(sql, values)
         conn.commit()
@@ -66,12 +102,101 @@ def register():
         cursor.close()
         conn.close()
 
-        return redirect(url_for("login"))
+        # Send OTP Email AFTER database commit
+        msg = Message(
+            subject="CampusPulse Email Verification",
+            sender=app.config["MAIL_USERNAME"],
+            recipients=[email]
+        )
+
+        msg.body = f"""
+Hello {full_name},
+
+Welcome to CampusPulse!
+
+Your Email Verification OTP is:
+
+{otp}
+
+Do not share this OTP.
+
+Thank you,
+CampusPulse Team
+"""
+
+        mail.send(msg)
+
+        # Save email in session
+        session["verify_email"] = email
+
+        # Redirect to OTP page
+        return redirect(url_for("verify_email"))
 
     return render_template("register.html")
+    
+# 📧 VERIFY EMAIL
+@app.route("/verify_email", methods=["GET", "POST"])
+def verify_email():
+
+    if "verify_email" not in session:
+        return redirect(url_for("register"))
+
+    email = session["verify_email"]
+
+    if request.method == "POST":
+
+        entered_otp = request.form.get("otp")
+
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute(
+            "SELECT * FROM students WHERE email=%s",
+            (email,)
+        )
+
+        student = cursor.fetchone()
+
+        # Check if student exists
+        if not student:
+
+            cursor.close()
+            conn.close()
+
+            return "Student not found."
+
+        # OTP matched
+        if student["otp"] == entered_otp:
+
+            cursor.execute("""
+                UPDATE students
+                SET otp=NULL,
+                    email_verified=1
+                WHERE email=%s
+            """, (email,))
+
+            conn.commit()
+
+            cursor.close()
+            conn.close()
+
+            session.pop("verify_email", None)
+
+            return redirect(url_for("login"))
+
+        # Wrong OTP
+        cursor.close()
+        conn.close()
+
+        return render_template(
+            "verify_email.html",
+            error="❌ Invalid OTP. Please try again."
+        )
+
+    return render_template("verify_email.html")
 
 
-# 🔐 LOGIN
+## 🔐 LOGIN
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -90,19 +215,32 @@ def login():
 
         user = cursor.fetchone()
 
+        if user:
+
+            if user["email_verified"] == 0:
+
+                session["verify_email"] = user["email"]
+
+                cursor.close()
+                conn.close()
+
+                return redirect(url_for("verify_email"))
+
         cursor.close()
         conn.close()
 
         if user:
+
             session["user_id"] = user["id"]
             session["user_name"] = user["full_name"]
 
             return redirect(url_for("student_dashboard"))
+
         else:
+
             return "Invalid Credentials ❌"
 
     return render_template("login.html")
-
 
 # 🎓 STUDENT DASHBOARD
 @app.route("/student_dashboard")
@@ -1808,6 +1946,28 @@ Issue Date : {data['issue_date']}
         as_attachment=True,
         download_name=f"{data['full_name']}_Certificate.pdf"
     )
+@app.route("/test_email")
+def test_email():
+
+    msg = Message(
+        subject="CampusPulse Test Email",
+        recipients=["vuyyalaharsha15@gmail.com"]
+    )
+
+    msg.body = """
+Hello!
+
+This is a test email from CampusPulse.
+
+If you received this email,
+your Flask Mail configuration is working perfectly.
+
+CampusPulse Team
+"""
+
+    mail.send(msg)
+
+    return "Email Sent Successfully!"
 
 if __name__ == "__main__":
     app.run(debug=True)
