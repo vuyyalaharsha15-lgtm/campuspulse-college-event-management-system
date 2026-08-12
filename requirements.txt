@@ -1,1 +1,7 @@
-ÿþ
+Flask
+Flask-Mail
+mysql-connector-python
+reportlab
+qrcode
+Pillow
+gunicorn
