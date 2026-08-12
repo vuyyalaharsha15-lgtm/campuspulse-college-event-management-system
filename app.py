@@ -18,15 +18,15 @@ import random
 import json
 
 app = Flask(__name__)
-app.secret_key = "campuspulse_secret"
+app.secret_key = os.environ.get("SECRET_KEY")
 from flask_mail import Mail
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'campuspulsemanagement@gmail.com'
-app.config['MAIL_PASSWORD'] = 'ienkpzlbfigavgid'
-app.config['MAIL_DEFAULT_SENDER'] = 'campuspulsemanagement@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get("MAIL_USERNAME")
 
 mail = Mail(app)
 
@@ -34,12 +34,14 @@ mail = Mail(app)
 # 🔌 MySQL Connection
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Harsha@2009",   # Workbench password (usually empty in local system)
-        database="campuspulse_db"
+        host=os.environ.get("MYSQL_HOST"),
+        port=int(os.environ.get("MYSQL_PORT")),
+        user=os.environ.get("MYSQL_USER"),
+        password=os.environ.get("MYSQL_PASSWORD"),
+        database=os.environ.get("MYSQL_DB"),
+        ssl_ca="/etc/secrets/ca.pem",
+        ssl_verify_cert=True
     )
-
 
 # 🏠 Home Page
 @app.route("/")
