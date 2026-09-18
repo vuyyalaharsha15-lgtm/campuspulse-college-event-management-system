@@ -137,7 +137,6 @@ def register():
             sender=app.config["MAIL_USERNAME"],
             recipients=[email]
         )
-
         msg.body = f"""
 Hello {full_name},
 
@@ -153,10 +152,20 @@ Thank you,
 CampusPulse Team
 """
 
-        mail.send(msg)
+        try:
+            print("Sending OTP to:", email)
+            print("OTP:", otp)
+
+            mail.send(msg)
+
+            print("OTP Email Sent Successfully!")
+
+        except Exception as e:
+            print("Email Sending Failed")
+            print(e)
+            return f"Email Error: {e}"
 
         session["verify_email"] = email
-
         return redirect(url_for("verify_email"))
 
     return render_template("register.html")
